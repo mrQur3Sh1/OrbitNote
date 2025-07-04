@@ -1,0 +1,33 @@
+﻿<Application x:Class="NotebookMVVM.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NotebookMVVM.Ui.Desktop.Converters">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <local:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+
+            <!-- Cyan flat button style -->
+            <Style x:Key="FlatCyanButton" TargetType="Button">
+                <Setter Property="Background" Value="#00e5ff"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Padding" Value="10,5"/>
+                <Setter Property="Margin" Value="5,0"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,165 @@
+﻿<Window x:Class="NotebookMVVM.Ui.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:NotebookMVVM.Logic.Ui"
+        xmlns:local="clr-namespace:NotebookMVVM.Ui.Desktop.Converters"
+        Title="Notebook Dashboard"
+        Height="768" Width="1024"
+        Background="#1e1e1e"
+        FontFamily="Segoe UI"
+        WindowStartupLocation="CenterScreen"
+        FontSize="14">
+
+    <Window.Resources>
+        <!-- Cyan Button -->
+        <Style x:Key="FlatCyanButton" TargetType="Button">
+            <Setter Property="Background" Value="#00e5ff"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Converters -->
+        <local:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <local:NoteStateToDraftVisibilityConverter x:Key="NoteStateToDraftVisibilityConverter"/>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="📓 Notebook Dashboard"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="#00e5ff"
+                   Grid.Row="0"
+                   Margin="0,0,0,20"/>
+
+        <!-- Toolbar -->
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Margin="67,4,0,16">
+            <Button Content="💾 Save Binary" Command="{Binding SaveBinaryCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="📂 Load Binary" Command="{Binding LoadBinaryCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="🗎 Save XML" Command="{Binding SaveXmlCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="📥 Load XML" Command="{Binding LoadXmlCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="🌐 Export HTML" Command="{Binding ExportHtmlCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="📊 View Stats" Command="{Binding ViewStatsCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="🖨 Print" Command="{Binding PrintCommand}" Style="{StaticResource FlatCyanButton}"/>
+            <Button Content="📄 Export PDF" Command="{Binding ExportPdfCommand}" Style="{StaticResource FlatCyanButton}"/>
+        </WrapPanel>
+
+        <!-- Search Bar -->
+        <Grid Grid.Row="2" Margin="373,8,-307,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="27*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="SearchTextBox"
+                     Height="35"
+                     Background="#2a2a2a"
+                     Foreground="White"
+                     BorderThickness="0"
+                     Padding="10,0"
+                     VerticalContentAlignment="Center"
+                     Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"
+                     FontSize="14" Margin="299,0,326,53" Grid.RowSpan="2"/>
+
+            <TextBlock Text="Search notes..."
+                       Foreground="Gray"
+                       Padding="12,0,0,0"
+                       VerticalAlignment="Top"
+                       FontSize="14"
+                       IsHitTestVisible="False"
+                       Visibility="{Binding Text.Length, ElementName=SearchTextBox, Converter={StaticResource IntToVisibilityConverter}}" Margin="299,8,40,0"/>
+            <CheckBox Content="Show Archived Notes"
+                      IsChecked="{Binding ShowArchived, Mode=TwoWay}"
+                      Foreground="White"
+                      Margin="-369,9,1059,-9" Grid.RowSpan="2"/>
+        </Grid>
+
+        <!-- Notes List -->
+        <ListBox x:Name="NotesListBox"
+         Grid.Row="3"
+         ItemsSource="{Binding FilteredNotes}"
+         SelectedItem="{Binding SelectedNote, Mode=TwoWay}"
+         BorderThickness="0"
+         Background="Transparent"
+         Foreground="White"
+         ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#2e2e2e"
+                            CornerRadius="8"
+                            Margin="0,0,0,15"
+                            Padding="15"
+                            BorderBrush="#00e5ff"
+                            BorderThickness="1">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                                <TextBlock Text="  •  " Foreground="#888" Margin="5,0"/>
+                                <TextBlock Text="{Binding State}" FontSize="14" Foreground="#00e5ff" FontWeight="SemiBold"/>
+                            </StackPanel>
+
+                            <TextBlock Text="(Draft)"
+                                       Foreground="Orange"
+                                       FontWeight="Bold"
+                                       Visibility="{Binding State, Converter={StaticResource NoteStateToDraftVisibilityConverter}}"
+                                       Margin="0,4,0,0"/>
+
+                            <TextBlock Text="{Binding Content}" FontSize="14" TextWrapping="Wrap" Foreground="#bbbbbb" Margin="0,5,0,0"/>
+                            <TextBlock Text="{Binding CreatedOn}" FontSize="12" Foreground="#888" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Add / Edit / Delete Buttons -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,20,0,0">
+            <Button Content="➕ Add New Note"
+                    Width="180"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource FlatCyanButton}"
+                    Command="{Binding AddNoteCommand}"/>
+            <Button Content="✏ Edit Selected Note"
+                     Width="180"
+                     Height="40"
+                     Margin="10,0,0,0"
+                     HorizontalAlignment="Left"
+                     Style="{StaticResource FlatCyanButton}"
+                     Command="{Binding EditNoteCommand}"/>
+
+            <Button Content="🗑 Delete Selected Note"
+                    Width="180"
+                    Height="40"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource FlatCyanButton}"
+                    Command="{Binding DeleteNoteCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

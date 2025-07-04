@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDiaryEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DiaryEntry>
+    <Id>2073617342</Id>
+    <Title>To be edit</Title>
+    <Content>hidden ok</Content>
+    <CreatedOn>2025-06-19T20:16:51.0136132+05:00</CreatedOn>
+    <IsFavorite>false</IsFavorite>
+    <State>Final</State>
+  </DiaryEntry>
+  <DiaryEntry>
+    <Id>1748265244</Id>
+    <Title>Mom Shopping</Title>
+    <Content>vegetables 
+fruits</Content>
+    <CreatedOn>2025-06-19T20:17:38.5327792+05:00</CreatedOn>
+    <IsFavorite>true</IsFavorite>
+    <State>Final</State>
+  </DiaryEntry>
+</ArrayOfDiaryEntry>

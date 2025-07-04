@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDiaryEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DiaryEntry>
+    <Id>969122288</Id>
+    <Title>Evening Work</Title>
+    <Content>-&gt;Car wash
+-&gt;Room Clean</Content>
+    <CreatedOn>2025-06-19T11:32:56.7546108+05:00</CreatedOn>
+    <IsFavorite>false</IsFavorite>
+    <State>Final</State>
+  </DiaryEntry>
+  <DiaryEntry>
+    <Id>1589322700</Id>
+    <Title>Homework</Title>
+    <Content>Data Science
+Cloud </Content>
+    <CreatedOn>2025-06-19T12:00:37.819698+05:00</CreatedOn>
+    <IsFavorite>false</IsFavorite>
+    <State>Final</State>
+  </DiaryEntry>
+  <DiaryEntry>
+    <Id>1860494887</Id>
+    <Title>My interview</Title>
+    <Content>9-7</Content>
+    <CreatedOn>2025-06-19T12:08:23.5821057+05:00</CreatedOn>
+    <IsFavorite>false</IsFavorite>
+    <State>Final</State>
+  </DiaryEntry>
+  <DiaryEntry>
+    <Id>-1590299164</Id>
+    <Title>MY PROJECT</Title>
+    <Content>SOON DEADLINE</Content>
+    <CreatedOn>2025-06-19T12:18:55.7050278+05:00</CreatedOn>
+    <IsFavorite>false</IsFavorite>
+    <State>Final</State>
+  </DiaryEntry>
+</ArrayOfDiaryEntry>

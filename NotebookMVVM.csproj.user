@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="App.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ui.Desktop\MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ui.Desktop\NoteEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ui.Desktop\SearchWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ui.Desktop\StatisticsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Ui.Desktop\WelcomeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="App.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ui.Desktop\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ui.Desktop\NoteEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ui.Desktop\SearchWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ui.Desktop\StatisticsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Ui.Desktop\WelcomeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

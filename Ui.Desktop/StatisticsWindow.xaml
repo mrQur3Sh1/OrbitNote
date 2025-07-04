@@ -1,0 +1,61 @@
+﻿<Window x:Class="NotebookMVVM.Ui.Desktop.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:NotebookMVVM.Logic.Ui"
+        Title="Notebook Stats"
+        Height="400" Width="600"
+        Background="#1e1e1e"
+        Foreground="White"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI" FontSize="14"
+        ResizeMode="NoResize">
+
+    <!-- Assuming ViewModel is still passed from outside -->
+
+    <Grid Margin="30">
+        <StackPanel>
+            <!-- Heading -->
+            <TextBlock Text="📊 Notebook Statistics"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#00e5ff"
+                       Margin="0,0,0,30"
+                       HorizontalAlignment="Center"/>
+
+            <!-- Statistics Details -->
+            <Border Background="#2a2a2a"
+                    CornerRadius="10"
+                    Padding="20"
+                    BorderBrush="#00e5ff"
+                    BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="{Binding TotalNotes, StringFormat='📝 Total Notes: {0}'}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Margin="0,5"/>
+                    <TextBlock Text="{Binding FavoriteNotes, StringFormat='⭐ Favorite Notes: {0}'}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Margin="0,5"/>
+                    <TextBlock Text="{Binding AvgWordCount, StringFormat='✍ Average Word Count: {0:F1}'}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Margin="0,5"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Close Button (now MVVM bound) -->
+            <Button Content="Close"
+                    Width="100"
+                    Height="35"
+                    Margin="0,30,0,0"
+                    HorizontalAlignment="Center"
+                    Background="#00e5ff"
+                    Foreground="Black"
+                    FontWeight="Bold"
+                    BorderBrush="Transparent"
+                    Cursor="Hand"
+                    Command="{Binding CloseCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
