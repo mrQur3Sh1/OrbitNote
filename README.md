@@ -95,3 +95,15 @@ This project is licensed under the MIT License — use it freely for personal an
 ---
 
 > 🪐 OrbitNote — where every note completes its cycle.
+>
+> 
+![Screenshot 2025-06-19 172054](https://github.com/user-attachments/assets/3f518b6a-60e0-461d-afc1-3a425ed0039a)
+
+![Screenshot 2025-06-19 163352](https://github.com/user-attachments/assets/50cfbeee-fb1b-4b91-82ef-774ccb35d57d)
+
+
+![Screenshot 2025-06-19 170149](https://github.com/user-attachments/assets/5962d8ed-a21c-4039-8dda-fb73d949e074)
+
+![Screenshot 2025-06-19 171328](https://github.com/user-attachments/assets/481f110f-3e85-45f3-bcf6-84cbea91837c)
+
+![Screenshot 2025-06-19 162426](https://github.com/user-attachments/assets/6c130f14-45ff-4b19-8c4a-7b4b2ef32ee2)
